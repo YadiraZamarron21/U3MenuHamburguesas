@@ -1,0 +1,25 @@
+﻿@model U3.Models.ViewModels.MenuViewModel
+@{
+    Layout = "Layout";
+}
+<section class="menu3">
+
+    <div>
+        <h1>NUESTRO MENÚ</h1>
+        @foreach (var item in Model.ClasificacionesL)
+        {
+            <h3>@item.Nombre</h3>
+
+            @foreach (var i in item.Menu)
+            {
+                <h2 class="seleccionado"><a href="~/Home/Menu/@i.Nombre.Replace(" ","-")"><span>@i.Nombre</span> <span class="price">@i.Precio.ToString("c")</span></a></h2>
+
+            }
+        }
+
+    </div>
+    <div>
+        <img src="~/hamburguesas/@(Model.IdSeleccionado).png" />
+        <p>@Model.Descripcion</p>
+    </div>
+</section>

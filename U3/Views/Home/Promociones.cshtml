@@ -1,0 +1,34 @@
+﻿@model U3.Models.ViewModels.PromocionesViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "Layout";
+}
+
+<section class="menu1">
+    @if (Model.Promocion > 0)
+    {
+        <img src="~/hamburguesas/@(Model.Id).png" />
+        <div class="datos">
+            <h3>
+                <del>@Model.Precio.ToString("c")</del>
+                <b>@Model.Promocion.ToString("c")</b>
+            </h3>
+            <h2>@Model.Nombre</h2>
+            <p>@Model.Descripcion</p>
+        </div>
+        <span>
+            @if (Model.IndexI > 0)
+            {
+                <a href="~/Home/Promociones/@(Model.IndexI-1)">&lt;</a>
+            }
+            @if (Model.IndexI < Model.IndexF - 1)
+            {
+                <a href="~/Home/Promociones/@(Model.IndexI+1)">&gt;</a>
+            }
+        </span>
+    }
+    else
+    {
+        <h1>No hay promociones</h1>
+    }
+</section>
